@@ -18,7 +18,6 @@ var optimise = true;
 
     function bindEvents() {
         window.addEventListener('scroll', handleScroll);
-        window.addEventListener('resize', handleScroll);
     }
 
     function bindPeriodic(ms) {
