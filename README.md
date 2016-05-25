@@ -49,7 +49,7 @@ There are some limitations caused by this optimisation strategy. The main one is
 
 #### Further optimisations
 
-There are some other things that can be done following this same optimisation strategy that would reduce the number of nodes to inspect. The main one I can think of is:
+There are some other things that can be done following this same optimisation strategy that would further reduce the number of nodes to inspect. The main one I can think of is:
 
  - [ ] Stop inspecting node state after the first node outside the viewport in the direction of scroll
 
