@@ -19,8 +19,9 @@ Check out the [crude demo](https://peterchamberlin.com/experiments/pavane/demo.h
 
 I hope I'll get a chance to do some more work on this. Development I've got in mind:
 
+ - [ ] Play about more with the optimisation strategy (see below)
  - [ ] Make it a usable library not just a hacky script
- - [ ] Rewrite in ES6 with transpilation from Babel
+ - [ ] Rewrite in ES6 with transpilation using Babel
  - [ ] Unit tests
  - [ ] Promises
  - [ ] Additional / custom events (i.e. you might want something to fire when 500px outside viewport)
