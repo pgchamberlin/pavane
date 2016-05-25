@@ -1,3 +1,7 @@
+var nodesMonitor = { nodes: [], sum: 0, mean: 0 };
+var monitor = true;
+var optimise = true;
+
 ;(function() {
 
     /**
@@ -7,12 +11,10 @@
      *   viewport:within    (top|bottom) The object is wholly within the viewport
      *   viewport:outside   (top|bottom)  The object is wholly outside the viewport
      */
-
     var lastScrollTop;
     var scrollDirection;
     var ticking = false;
     var nodes = [];
-    var optimise = true;
 
     function bindEvents() {
         window.addEventListener('scroll', handleScroll);
@@ -92,6 +94,12 @@
             nodesToUpdate = nodes;
         }
 
+        if (monitor === true) {
+            nodesMonitor.sum += nodesToUpdate.length;
+            nodesMonitor.nodes.push(nodesToUpdate.length);
+            nodesMonitor.mean = Math.ceil(nodesMonitor.sum / nodesMonitor.nodes.length);
+        }
+
         for (var i = 0; i < nodesToUpdate.length; i++) {
             if (updateNode(nodesToUpdate[i]) === false) break;
         }
@@ -148,18 +156,22 @@
 
     (function setupDemo() {
         var els = document.querySelectorAll('li');
+        function callback(target, colour, text) {
+            target.style.backgroundColor = colour;
+            target.innerHTML = text;
+        }
         for (i in els) {
             if (els.hasOwnProperty(i)) {
                 register(
                     els[i],
                     {
-                        enter:   function(e, t) { t.style.backgroundColor = "orange" },
-                        leave:   function(e, t) { t.style.backgroundColor = "red" },
-                        within:  function(e, t) { t.style.backgroundColor = "green" },
-                        outside: function(e, t) { t.style.backgroundColor = "none" }
+                        enter:   function(e, t) { callback(t, "orange", "Hi, I'm entering") },
+                        leave:   function(e, t) { callback(t, "red", "Bye, I'm leaving") },
+                        within:  function(e, t) { callback(t, "green", "I'm inside the viewport") },
+                        outside: function(e, t) { callback(t, "white", "") }
                     }
                 );
-            }
+             }
         }
     })();
 })();
