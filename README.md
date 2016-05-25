@@ -36,7 +36,7 @@ The thing is, the user is scrolling in one or other direction. So why do we chec
 
 What the `optimise` flag enables is a node update strategy which does some (possibly) more efficient things:
 
- - When a nodes are registered they inserted in order of their `scrollY` property which means the nodes are stored in the order they appear down the page.
+ - When nodes are registered they inserted into a list in order of their `scrollY` property which means the nodes are stored in the order they appear down the page.
  - When a update happens a binary search is carried out on the list of nodes, searching for the node just outside the viewport in the opposite direction to the scroll.
  - This node is used as a slice point. The nodes are sliced at that point and the nodes in the opposite direction to the scroll are discarded.
  - Only the nodes in the direction of scroll are monitored for state changes.
